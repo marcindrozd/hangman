@@ -132,9 +132,9 @@ def playAgain():
 	else:
 		exit(1)
 
-gameIsDone = False
 print "H A N G M A N"
 secretWord = getRandomWord(words)
+gameIsDone = False
 
 while gameIsDone == False:
 	displayBoard(HANGMANPICS, missedLetters, correctLetters, secretWord)
@@ -159,8 +159,25 @@ while gameIsDone == False:
 			print "You have run out of guesses\nAfter " + str(len(missedLetters)) + " missed guesses and " + str(len(correctLetters)) + " correct guesses. The word was '" + secretWord + "'"
 			gameIsDone = True
 			
-	if gameIsDone:
-		playAgain()
+	#if gameIsDone:
+	#	playAgain()
+	while gameIsDone:
+		answer = raw_input('Run again? (y/n): ')
+		#if answer in ('y', 'n'):
+		#	break
+		#print 'Invalid input.'
+		if answer == 'y':
+			gameIsDone = False
+			missedLetters = ""
+			correctLetters = ""
+			alreadyGuessed = ""
+			gameIsDone = False
+			secretWord = getRandomWord(words)
+		else:
+			print 'Goodbye'
+			break	
+			
+
 				
 	#if gameIsDone:
 	#	if playAgain():
